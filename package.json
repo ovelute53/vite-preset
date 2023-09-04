@@ -2,6 +2,7 @@
   "name": "vite-preset",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "start": "npm run dev -- --open",
     "dev": "vite --host localhost --port 3000 --cors",
@@ -11,16 +12,17 @@
     "format": "prettier --write --cache .",
     "postinstall": "husky install"
   },
+  "lint-staged": {
+    "src/**/*.{jsx,js}": [
+      "prettier --write --cache",
+      "eslint --fix"
+    ]
+  },
   "dependencies": {
     "axios": "^1.5.0",
-    "gitignore": "^0.7.0",
-    "localforage": "^1.10.0",
-    "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0",
-    "remark": "^14.0.3",
-    "sort-by": "^1.2.0",
     "styled-components": "^6.0.7"
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
-const { defineConfig } = require('vite');
-const reactPlugin = require('@vitejs/plugin-react');
+import { defineConfig } from 'vite';
+import reactPlugin from '@vitejs/plugin-react-swc';
+import path from 'path';
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
@@ -10,8 +11,9 @@ export default defineConfig({
     cors: true,
   },
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
+    alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
+  },
+  optimizeDeps: {
+    include: ['react-markdown'],
   },
 });
